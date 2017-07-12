@@ -16,7 +16,7 @@ public class UserRestController {
 	
 	@RequestMapping(name="/user",method = RequestMethod.GET)
 	//@RequestParam用来获得静态的URL请求入参     spring注解时action里用到。
-	public User findByName(@RequestParam(value = "userName", required = true) String userName){
-		return userService.findByName(userName);
+	public User findByName(){
+		return userService.findByName("admin");
 	}
 }

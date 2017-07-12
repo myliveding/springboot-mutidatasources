@@ -5,13 +5,12 @@
 		<result column="id" property="id" />
 		<result column="user_name" property="userName" />
 	</resultMap>
-	<parameterMap id="User" type="haust.vk.entity.User"/>
-	<sql id="Base_Column_List">
-		id, user_name
-	</sql>
+	<!--<parameterMap id="User" type="haust.vk.entity.User"/>-->
+	<!--<sql id="Base_Column_List">-->
+		<!--id, user_name-->
+	<!--</sql>-->
 	<select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
-		select
-		<include refid="Base_Column_List" />
+		select *
 		from user
 		where id = 1
 	</select>

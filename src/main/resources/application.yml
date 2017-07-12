@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    master:
+      url: jdbc:mysql://localhost:3306/flight?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+
+    cluster:
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+
+server:
+  port: 8089

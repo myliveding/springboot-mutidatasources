@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserDao {
-	User findByName(@Param("userName") String userName);
+	User findByName(String userName);
 }

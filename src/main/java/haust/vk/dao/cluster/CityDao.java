@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface CityDao {
 	
-	City findByName(@Param("cityName") String cityName);
+	City findByName(String cityName);
 }

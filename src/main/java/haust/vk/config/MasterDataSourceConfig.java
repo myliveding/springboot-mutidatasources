@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -28,29 +29,34 @@ public class MasterDataSourceConfig {
 	static final String MAPPER_LOCATION = "classpath:mapper/master/*.xml";
 	
 	//接下来使用的value注解获取application.properties拿到值进行初始化  spring-EL表达式
-	@Value("${master.datasource.url}")
-	private String url ;
-	@Value("${master.datasource.username}")
-	private String user ;
-	@Value("${master.datasource.password}")
-	private String password ;
-	@Value("${master.datasource.driverClassName}")
-	private String driverClass ;
-	
+//	@Value("${master.datasource.url}")
+//	private String url ;
+//	@Value("${master.datasource.username}")
+//	private String user ;
+//	@Value("${master.datasource.password}")
+//	private String password ;
+//	@Value("${master.datasource.driverClassName}")
+//	private String driverClass ;
 	//主库数据源
 	//Bean明确地指示产生一个bean的方法，并且交给Spring容器管理；
-	@Bean(name="masterDataSource")
+//	@Bean(name="masterDataSource")
 	//标志这个 Bean 如果在多个同类 Bean 候选时，该 Bean 优先被考虑。「多数据源配置的时候注意，必须要有一个主数据源，用 @Primary 标志该 Bean
-	@Primary
-	public DataSource masterDataSource(){
-		DruidDataSource druidDataSource = new DruidDataSource();
-		druidDataSource.setUrl(url);
-		druidDataSource.setUsername(user);
-		druidDataSource.setPassword(password);
-		druidDataSource.setDriverClassName(driverClass);
-		return druidDataSource;
-		
-	}
+//	@Primary
+//	public DataSource masterDataSource(){
+//		DruidDataSource druidDataSource = new DruidDataSource();
+//		druidDataSource.setUrl(url);
+//		druidDataSource.setUsername(user);
+//		druidDataSource.setPassword(password);
+//		druidDataSource.setDriverClassName(driverClass);
+//		return druidDataSource;
+//	}
+    @Primary
+    @Bean(name="masterDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.master")
+    public DataSource masterDataSource(){
+        return new DruidDataSource();
+    }
+
 	//主库事务
 	@Bean(name = "masterTransactionManager")
     @Primary
